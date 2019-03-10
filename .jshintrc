@@ -18,5 +18,6 @@
     "MathAndPhysics": true,
     "PlanetRawData": true,
     "Promise": true
-  }
+  },
+  "esversion": 6
 }
