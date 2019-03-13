@@ -47,13 +47,13 @@ Instructions:
         } else {
           // It failed :(
           // Be nice and reject with req.statusText
-          reject(req.statusText);
+          reject(Error(req.statusText));
         }
       };
       req.onerror = function () {
         // It failed :(
         // Pass a 'Network Error' to reject
-        reject('Network Error');
+        reject(Error('Network Error'));
       };
       req.send();
     });
@@ -67,10 +67,10 @@ Instructions:
     pass 'unknown' to addSearchHeader if it rejects.
      */
     get('../data/earth-like-results.json')
-        .then(value => addSearchHeader(value))
-        .catch(value => {
-          console.log(value);
-          addSearchHeader('unknown');
-        });
+      .then(response => addSearchHeader(response))
+      .catch(error => {
+        addSearchHeader('unknown');
+        console.log(error);
+      });
   });
 })(document);
